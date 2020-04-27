@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>layout 后台大布局 - Layui</title>
+		<link rel="stylesheet" href="js/layui-v2.5.5/layui/css/layui.css">
+		<style type="text/css">
+			.layui-layout-admin .layui-body {
+				top: 50px;
+			}
+			
+			.layui-tab-title li:hover {
+				background: #009688;
+			}
+			.layui-tab-title li:first-child>i {
+					display: none;
+				}
+				.layui-tab-title{
+					position: fixed;
+					top:60px;
+					left: 200px;
+					z-index: 999;
+				}
+		</style>
+	</head>
+
+	<body class="layui-layout-body">
+		<div class="layui-layout layui-layout-admin">
+			<div class="layui-header">
+				<div class="layui-logo">layui 后台布局</div>
+				<!-- 头部区域（可配合layui已有的水平导航） -->
+				<ul class="layui-nav layui-layout-left">
+					<li class="layui-nav-item">
+						<a href="">控制台</a>
+					</li>
+					<li class="layui-nav-item">
+						<a href="">商品管理</a>
+					</li>
+					<li class="layui-nav-item">
+						<a href="">用户</a>
+					</li>
+					<li class="layui-nav-item">
+						<a href="javascript:;">其它系统</a>
+						<dl class="layui-nav-child">
+							<dd>
+								<a href="">邮件管理</a>
+							</dd>
+							<dd>
+								<a href="">消息管理</a>
+							</dd>
+							<dd>
+								<a href="">授权管理</a>
+							</dd>
+						</dl>
+					</li>
+				</ul>
+				<ul class="layui-nav layui-layout-right">
+					<li class="layui-nav-item">
+						<a href="javascript:;">
+							<img src="http://t.cn/RCzsdCq" class="layui-nav-img"> 贤心
+						</a>
+						<dl class="layui-nav-child">
+							<dd>
+								<a href="">基本资料</a>
+							</dd>
+							<dd>
+								<a href="">安全设置</a>
+							</dd>
+						</dl>
+					</li>
+					<li class="layui-nav-item">
+						<a href="">退了</a>
+					</li>
+				</ul>
+			</div>
+
+			<div class="layui-side layui-bg-black">
+				<div class="layui-side-scroll">
+					<!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+					<ul class="layui-nav layui-nav-tree" lay-filter="test">
+						<li class="layui-nav-item">
+							<a href="javascript:;" class="lll" data-type="tabAdd" data-url="information/shouye.html" data-id="shouye" data-title="首页">首页</a>
+						</li>
+						<li class="layui-nav-item">
+							<a class="javascript:;" href="javascript:;">所有商品<span class="layui-nav-more"></span></a>
+							<dl class="layui-nav-child">
+								<dd>
+									<a href="javascript:;" class="lll" data-type="tabAdd" data-url="information/getCarInformation.html" data-id="carInformation" data-title="车辆信息">车辆信息</a>
+								</dd>
+								<dd>
+									<a href="javascript:;" class="lll" data-type="tabAdd" data-url="information/getPersonInformation.html" data-id="personInformation" data-title="人员信息">人员信息</a>
+								</dd>
+								<dd>
+									<a href="javascript:;">列表三</a>
+								</dd>
+								
+							</dl>
+						</li>
+						<li class="layui-nav-item">
+							<a href="javascript:;">解决方案</a>
+							<dl class="layui-nav-child">
+								<dd>
+									<a href="javascript:;">列表一</a>
+								</dd>
+								<dd>
+									<a href="javascript:;">列表二</a>
+								</dd>
+								
+							</dl>
+						</li>
+						<li class="layui-nav-item">
+							<a href="http://www.baidu.com">百度</a>
+						</li>
+						<li class="layui-nav-item">
+							<a href="http://www.taobao.com">淘宝</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="layui-body" style="margin-top: 60px;">
+				<!-- 内容主体区域 -->
+				<div>
+					<div class="layui-tab" lay-filter="addDemo" lay-allowclose="true">
+						<ul class="layui-tab-title" style="height: 44px;width: 100%;">
+							<li class="layui-this" lay-id="shouye" tabindex="1" lay-allowclose="false" >首页</li>
+							<!--<li lay-id="22" tabindex="2">用户管理</li>
+		    <li lay-id="33" tabindex="3">权限分配</li>
+		    <li lay-id="44" tabindex="4">商品管理</li>
+		    <li lay-id="55" tabindex="5">订单管理</li>-->
+						</ul>
+						<div class="layui-tab-content">
+							<div class="layui-tab-item layui-show">
+								<table class="layui-hide" id="demo11" lay-filter="test"></table>
+							</div>
+							<!--<div class="layui-tab-item">内容2</div>
+		   <div class="layui-tab-item">内容3</div>
+		    <div class="layui-tab-item">内容4</div>
+		    <div class="layui-tab-item">内容5</div>-->
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="layui-footer">
+				<!-- 底部固定区域 -->
+				© layui.com - 底部固定区域
+			</div>
+		</div>
+		<!--<script src="js/jquery-2.2.2.min.js" type="text/javascript" charset="utf-8"></script>-->
+		<script src="js/layui-v2.5.5/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			layui.use(['laydate', 'laypage', 'layer', 'table', 'element'], function() {
+
+				var laydate = layui.laydate //日期
+					,
+					laypage = layui.laypage //分页
+					,
+					layer = layui.layer //弹层
+					,
+					table = layui.table //表格
+					,
+					element = layui.element //元素操作
+					,
+					$ = layui.jquery
+				////向世界问个好
+				//layer.msg('Hello World');
+				//
+				//监听Tab切换
+				element.on('tab(demo11)', function(data) {
+					layer.tips('切换了 ' + data.index + '：' + this.innerHTML, this, {
+						tips: 1
+					});
+				});
+
+	/*
+   * table接受数据
+   */
+  
+  table.render({
+    elem: '#demo11'
+    ,height: 420
+    ,url: 'http://www.mbystudents.cn/FaceMainF/FenPageServlet'//数据接口
+    ,where:{
+    	tea_class:"16级网络班"
+    }
+    ,title: '请假表'
+    ,toolbar: 'default' //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
+    ,totalRow: true //开启合计行
+    ,parseData:function(res){
+    	console.log(res);
+    	return{
+    		"code":0,
+    		"msg":"",
+    		"count":1000,
+    		"data":res
+    	};
+    	
+    }
+    ,request: {
+		  pageName: 'pageNo' //页码的参数名称，默认：page
+		  ,limitName: 'pageSize' //每页数据量的参数名，默认：limit
+				    	}
+    ,page:{
+    	limit:5,
+    	limits:[5,10,15,20,25]
+    }
+    ,cols: [[ //表头
+      {type: 'checkbox', fixed: 'left'}
+      ,{field: 'stu_id', title: '学号', width:150, sort: true,}
+      ,{field: 'stu_name', title: '姓名', width: 100}
+      ,{field: 'qj_type', title: '请假类型', width:90}
+      ,{field: 'qj_stime', title: '请假开始时间', width: 100, sort: true}
+      ,{field: 'qj_etime', title: '请假结束时间', width:100, sort: true}
+      ,{field: 'qj_reason', title: '请假原因', width: 100}
+      ,{field: 'qj_state', title: '审批状态', width:100} 
+      ,{field: 'approver', title: '审批人', width: 80}
+     
+    ]]
+    
+  });
+  
+
+
+				var active = {
+					//在这里给active绑定几项事件，后面可通过active调用这些事件
+					tabAdd: function(url, id, name) {
+						//新增一个Tab项 传入三个参数，分别对应其标题，tab页面的地址，还有一个规定的id，是标签中data-id的属性值
+						//关于tabAdd的方法所传入的参数可看layui的开发文档中基础方法部分
+						element.tabAdd('addDemo', {
+							title: name,
+							content: '<iframe data-frameid="' + id + '" scrolling="no" frameborder="0" src="' + url + '" style="width:100%;height:600px"></iframe>',
+							id: id //规定好的id
+						})
+						element.render('tab');
+
+					},
+					tabChange: function(id) {
+						//切换到指定Tab项
+						element.tabChange('addDemo', id); //根据传入的id传入到指定的tab项
+					},
+					tabDelete: function(id) {
+						element.tabDelete("addDemo", id); //删除
+					},
+					tabDeleteAll: function(ids) { //删除所有
+						$.each(ids, function(i, item) {
+							element.tabDelete("addDemo", item); //ids是一个数组，里面存放了多个id，调用tabDelete方法分别删除
+						})
+					}
+				};
+
+				//当点击有site-demo-active属性的标签时，即左侧菜单栏中内容 ，触发点击事件
+				$('.lll').on('click', function() {
+					//alert("hello")
+					var dataid = $(this);
+
+					//这时会判断右侧.layui-tab-title属性下的有lay-id属性的li的数目，即已经打开的tab项数目
+					if($(".layui-tab-title li[lay-id]").length <= 0) {
+						//如果比零小，则直接打开新的tab项
+						active.tabAdd(dataid.attr("data-url"), dataid.attr("data-id"), dataid.attr("data-title"));
+					} else {
+						//否则判断该tab项是否以及存在
+						//alert(2)
+						var isData = false; //初始化一个标志，为false说明未打开该tab项 为true则说明已有
+						$.each($(".layui-tab-title li[lay-id]"), function() {
+							//如果点击左侧菜单栏所传入的id 在右侧tab项中的lay-id属性可以找到，则说明该tab项已经打开
+							if($(this).attr("lay-id") == dataid.attr("data-id")) {
+								isData = true;
+							}
+							//alert(isData)
+						})
+						if(isData == false) {
+							//标志为false 新增一个tab项
+							active.tabAdd(dataid.attr("data-url"), dataid.attr("data-id"), dataid.attr("data-title"));
+						}
+					}
+					//最后不管是否新增tab，最后都转到要打开的选项页面上
+					active.tabChange(dataid.attr("data-id")); 
+				})
+
+			});
+		</script>
+	</body>
+
+</html>
